@@ -174,8 +174,16 @@ class XMLSignature {
 
         $id = $this->uuid();
         // add id to body
-        $body = $this->getNodes("/soapenv:Envelope/soapenv:Body");
+        $body = $this->getNodes(self::XPATH["Body"]);
         $body->setAttributeNS(self::NS["WSU"], "wsu:Id", "ID-{$id}");
+        // create header if not exists
+        if ($this->xpath->query(self::XPATH["Header"])->length === 0) {
+            $envelope = $this->xpath->query(self::XPATH["Envelope"])->item(0);
+            $envelope->insertBefore(
+                    $this->document->createElementNS(self::NS["SOAPENV"], "soapenv:Header"),
+                    $this->xpath->query(self::XPATH["Body"])->item(0));
+        }
+
         $timestampNode = $this->createTimestamp($id);
         $securityNode = $this->document->createElementNS(self::NS["WSSE"], "wsse:Security");
         $signatureNode = $this->document->createElementNS(self::NS["DS"], "ds:Signature");
@@ -189,23 +197,20 @@ class XMLSignature {
         $securityNode->appendChild($signatureNode);
         $securityNode->appendChild($timestampNode);
 
-        // create header if not exists
-        if ($this->xpath->query("/soapenv:Envelope/soapenv:Header")->length === 0) {
-            $envelope = $this->xpath->query("/soapenv:Envelope")->item(0);
-            $envelope->insertBefore(
-                    $this->document->createElementNS(self::NS["SOAPENV"], "soapenv:Header"),
-                    $this->xpath->query("/soapenv:Envelope/soapenv:Body")->item(0));
-        }
-        $this->getNodes("/soapenv:Envelope/soapenv:Header")->appendChild($securityNode);
+        $this->getNodes(self::XPATH["Header"])->appendChild($securityNode);
         $signedInfoNode->appendChild($this->createReference($timestampNode));
         $signedInfoNode->appendChild($this->createReference($body));
 
-        $signatureValue = null;
-        $sign = ["rsa-sha1" => OPENSSL_ALGO_SHA1];
-        openssl_sign($signedInfoNode->C14N(true), $signatureValue, $this->private_key, $sign[$this->signature_algorithm]);
-        $base64 = base64_encode($signatureValue);
-        $signatureValueNode->textContent = $base64;
+        $signatureValueNode->textContent = $this->createSignature($signedInfoNode);
         return $this->document;
+    }
+
+    private function createSignature(DOMNode $node) {
+        $sign = ["rsa-sha1" => OPENSSL_ALGO_SHA1];
+        $signatureValue = null;
+        openssl_sign($node->C14N(true), $signatureValue, $this->private_key, $sign[$this->signature_algorithm]);
+        $base64 = base64_encode($signatureValue);
+        return $base64;
     }
 
     private function createKeyInfo(string $id): DOMElement {
@@ -239,8 +244,14 @@ class XMLSignature {
         return $signedInfo;
     }
 
+    /**
+     * reference can be created only for element attached to DOMDocument
+     * @param DOMElement $element
+     * @return \DOMElement
+     */
     private function createReference(DOMElement $element): DOMElement {
         $referenceNode = $this->document->createElementNS(self::NS["DS"], "Reference");
+        // #TODO: check if Id exists!
         $value = $element->getAttributeNS(self::NS["WSU"], "Id");
         $referenceNode->setAttribute("URI", "#{$value}");
         $transformsNode = $this->document->createElementNS(self::NS["DS"], "ds:Transforms");
@@ -308,7 +319,7 @@ class XMLSignature {
      */
     private function getDigest(DOMNode $node, string $algorithm): string {
         // Logger::write("canon '{$node->localName}': " . $node->C14N(true));
-        $canonical = $node->C14N(false);
+        $canonical = $node->C14N(true);
         $digest = openssl_digest($canonical, $algorithm, true);
         $base64 = base64_encode($digest);
         if ($this->_DEBUG === true) {
@@ -324,19 +335,26 @@ class XMLSignature {
     private function validateSignature(): bool {
         $sign = ["rsa-sha1" => OPENSSL_ALGO_SHA1];
 
-        $binarySecurityTokens = $this->getNodes(self::XPATH["BinarySecurityToken"], true);
-        if ($binarySecurityTokens->length > 0) {
-            // validate BinarySecurityToken
-            $binarySecurityTokenValue = $binarySecurityTokens->item(0)->textContent;
-            $decoded_key = openssl_pkey_get_public($binarySecurityTokenValue);
-            Logger::write("BinarySecurityToken: " . $binarySecurityTokenValue);
-            Logger::write("decoded key: " . print_r($decoded_key, true) . ", OpenSSL: " . openssl_error_string());
-        }
-        $signedInfoNode = $this->getNodes(self::XPATH["SignedInfo"])->C14N(true, false, null, ["mpay", "soapenv"]);
+//        $binarySecurityTokens = $this->getNodes(self::XPATH["BinarySecurityToken"], true);
+//        if ($binarySecurityTokens->length > 0) {
+//            // validate BinarySecurityToken
+//            $binarySecurityTokenValue = $binarySecurityTokens->item(0)->textContent;
+//            $decoded_key = openssl_pkey_get_public($binarySecurityTokenValue);
+//            Logger::write("BinarySecurityToken: " . $binarySecurityTokenValue);
+//            Logger::write("decoded key: " . print_r($decoded_key, true) . ", OpenSSL: " . openssl_error_string());
+//        }
+        $signedInfoNode = $this->getNodes(self::XPATH["SignedInfo"]);
         $signatureValue = $this->getNodes(self::XPATH["SignatureValue"])->textContent;
+        if ($this->_DEBUG) {
+            Logger::write("try: " . $this->createSignature($signedInfoNode));
+            Logger::write("Signature Value: " . $signatureValue);
+        }
         $decode = base64_decode($signatureValue);
         foreach ($this->trusted_keys as $trusted_key) {
-            $result = openssl_verify($signedInfoNode, $decode, $trusted_key, $sign[$this->signature_algorithm]);
+            if($this->_DEBUG){
+                Logger::write("key = " . openssl_pkey_get_details($trusted_key)["key"]);
+            }
+            $result = openssl_verify($signedInfoNode->C14N(true), $decode, $trusted_key, $sign[$this->signature_algorithm]);
             if ($result === 1) {
                 return true;
             }

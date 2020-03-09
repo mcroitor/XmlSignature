@@ -1,16 +1,54 @@
-[ 2020-03-09T12:31:51+00:00 ] : node = Timestamp, calculated digest = 2ZX/5cMfwLQrppZ65pNWM92QYpA=
-[ 2020-03-09T12:31:51+00:00 ] : node = Body, calculated digest = gbdBMJ/Z5pjWmXz8hReMZt/GOGo=
-[ 2020-03-09T12:31:51+00:00 ] : node = Timestamp, calculated digest = t4qvg5pa5q6/vOaN60VtFixP7JE=
-[ 2020-03-09T12:31:51+00:00 ] : node = Body, calculated digest = 35pQEdrJi6xD8LSMiP0MHH1qRio=
-[ 2020-03-09T12:33:08+00:00 ] : node = Timestamp, calculated digest = 9gmqerZN16l+pR+enBpvldStwqU=
-[ 2020-03-09T12:33:08+00:00 ] : node = Body, calculated digest = ojTR+c2JGPtBi5rM3JUYRunzflc=
-[ 2020-03-09T12:33:08+00:00 ] : node = Timestamp, calculated digest = LgYT75kWWKzS95i/reGsoqCktrs=
-[ 2020-03-09T12:33:08+00:00 ] : node = Body, calculated digest = QbOGstwusiJtcGsfTUNIdp2C+Wo=
-[ 2020-03-09T12:33:35+00:00 ] : node = Timestamp, calculated digest = auUII8MgoZ0lU9pmuR9PPBWaRs4=
-[ 2020-03-09T12:33:35+00:00 ] : node = Body, calculated digest = 8Ye44rk4+kS1nnLayIDE1AmME5A=
-[ 2020-03-09T12:33:35+00:00 ] : node = Timestamp, calculated digest = dALe/T/0/URZSDgFiRJ65pdPg0E=
-[ 2020-03-09T12:33:35+00:00 ] : node = Body, calculated digest = lApPJvrkUulnAXt4GJd1Hkqkfyg=
-[ 2020-03-09T12:34:13+00:00 ] : node = Timestamp, calculated digest = vT/rr89jQTgucC7X0zGCdiemY3A=
-[ 2020-03-09T12:34:13+00:00 ] : node = Body, calculated digest = 3WK19DwFqHVSVhvNhRo9OSZ/t1c=
-[ 2020-03-09T12:34:13+00:00 ] : node = Timestamp, calculated digest = 8YBdvGLfB1Pso7knUtYlLyONdK4=
-[ 2020-03-09T12:34:13+00:00 ] : node = Body, calculated digest = fjXsb7HpIbPixcoMitqU0RFmBsE=
+[ 2020-03-09T13:40:21+00:00 ] : ========== test testSignDocument
+[ 2020-03-09T13:40:21+00:00 ] : node = Timestamp, calculated digest = Y+metcD+yOkzOdIQeSEyhvw85x0=
+[ 2020-03-09T13:40:21+00:00 ] : node = Body, calculated digest = +zyTniaKMKFEK36qRGhCuwAN1Wk=
+[ 2020-03-09T13:40:21+00:00 ] : ========== test testVerifySignature
+[ 2020-03-09T13:40:21+00:00 ] : node = Timestamp, calculated digest = Y+metcD+yOkzOdIQeSEyhvw85x0=
+[ 2020-03-09T13:40:21+00:00 ] : node = Body, calculated digest = +zyTniaKMKFEK36qRGhCuwAN1Wk=
+[ 2020-03-09T13:40:21+00:00 ] : try: O1pVYCnS4w2X1rugu38JufzQ7MGPg3wuqfYF1zdgM93VG6Aw6FW9KGXB9LA8RShofAelWb+/yX31gzaQh4nbWg7YP+Aa48gi/eND5o0LKJhkKVEsn2pT531T7xnaQmz4/2FWQicggdqE2NS/FlHpVAFt6Pjv5G6OO/+L/G+rsxCpOjN3mOTdXGVQktIa62hf95IIE8jQsMEYK37eEt0crp8BjxshqJ79XDbwC4nG6deLe/YhKtWzXpQWTo4q+pRPIYQhD/3Sr++/jpbUc8gsHHWwEMqDWWbF+ly3yAGCdSzY5EDa5U7czPS+7Bdk2kFf6kRCnLSjbft1yLtbZcMFcQ==
+[ 2020-03-09T13:40:21+00:00 ] : Signature Value: O1pVYCnS4w2X1rugu38JufzQ7MGPg3wuqfYF1zdgM93VG6Aw6FW9KGXB9LA8RShofAelWb+/yX31gzaQh4nbWg7YP+Aa48gi/eND5o0LKJhkKVEsn2pT531T7xnaQmz4/2FWQicggdqE2NS/FlHpVAFt6Pjv5G6OO/+L/G+rsxCpOjN3mOTdXGVQktIa62hf95IIE8jQsMEYK37eEt0crp8BjxshqJ79XDbwC4nG6deLe/YhKtWzXpQWTo4q+pRPIYQhD/3Sr++/jpbUc8gsHHWwEMqDWWbF+ly3yAGCdSzY5EDa5U7czPS+7Bdk2kFf6kRCnLSjbft1yLtbZcMFcQ==
+[ 2020-03-09T13:40:21+00:00 ] : key = -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlacuc90GYfJdZ5Lv4hYz
+1Mx7vKHk0b2oDFjkcVAYKrU9wDRtuxQgXERxw7xX3O3FFkgZ2o7NHB3Bv/Nw9d9D
+e5pYtgDrrCrp8RPNHy/k7j5gU2zQ6o7ReooRJHpubmlt2gySqK+JbDU/XDpu9MJN
+KXHdZBRIykAZYMVjXcHGYyQfP8lDX/Jf88KMVXTlXf1gFk/E+VlUt6p9yTEDXZd9
+PUwbmhULLeyiRiWqJDnUA++iIqnZDBjqfbDo3uAuzock7EDjCOCZVLhxvdeP9Wya
+1j6Xg48FOg1/c5MrYrRSy2hLZ16H3Opye9w5AUJceFrr5Tt8Fj+cqYW76YHM8jl4
+5QIDAQAB
+-----END PUBLIC KEY-----
+
+[ 2020-03-09T13:43:52+00:00 ] : ========== test testSignDocument
+[ 2020-03-09T13:43:52+00:00 ] : node = Timestamp, calculated digest = 7/WryDSMdLx7I74nq6N4RbnUlTk=
+[ 2020-03-09T13:43:52+00:00 ] : node = Body, calculated digest = 6/NfVN2AhXsR5hhKOFHUsh4XlMA=
+[ 2020-03-09T13:43:52+00:00 ] : ========== test testVerifySignature
+[ 2020-03-09T13:43:52+00:00 ] : node = Timestamp, calculated digest = 7/WryDSMdLx7I74nq6N4RbnUlTk=
+[ 2020-03-09T13:43:52+00:00 ] : node = Body, calculated digest = 6/NfVN2AhXsR5hhKOFHUsh4XlMA=
+[ 2020-03-09T13:43:52+00:00 ] : try: JYhOopQiUa2+v3BM3n9bY3zefNJ5N0CSgCwh2lM90Xvb9GLjMfQI2IBWfb5t0MW+OgLReGG51hJyeGlHRVEf8kieiqzGcz9FgUTO80idg0OgTJvFg4kcCuPMdAd+EJ1Fjh1vdhS02baUqPrGjD6XZPRmnar79QkMjOC/IgmRuC3psA4emeKYDGxpXkC8yXS1Z9iHpLzVsZSKyQxLaNly+CfIbjDwvO52+Elmvm84ftmjmJt581ZtfgboKA0D1X2D4AgjyAvJj8M3bkLjch+KJAZhntDnxbEIpHjMsnHfP4UM2H48Kvmgv6rc5LSoH+xPCAhQIRlWI/7PNz8UZ5lQKg==
+[ 2020-03-09T13:43:52+00:00 ] : Signature Value: JYhOopQiUa2+v3BM3n9bY3zefNJ5N0CSgCwh2lM90Xvb9GLjMfQI2IBWfb5t0MW+OgLReGG51hJyeGlHRVEf8kieiqzGcz9FgUTO80idg0OgTJvFg4kcCuPMdAd+EJ1Fjh1vdhS02baUqPrGjD6XZPRmnar79QkMjOC/IgmRuC3psA4emeKYDGxpXkC8yXS1Z9iHpLzVsZSKyQxLaNly+CfIbjDwvO52+Elmvm84ftmjmJt581ZtfgboKA0D1X2D4AgjyAvJj8M3bkLjch+KJAZhntDnxbEIpHjMsnHfP4UM2H48Kvmgv6rc5LSoH+xPCAhQIRlWI/7PNz8UZ5lQKg==
+[ 2020-03-09T13:43:52+00:00 ] : key = -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlacuc90GYfJdZ5Lv4hYz
+1Mx7vKHk0b2oDFjkcVAYKrU9wDRtuxQgXERxw7xX3O3FFkgZ2o7NHB3Bv/Nw9d9D
+e5pYtgDrrCrp8RPNHy/k7j5gU2zQ6o7ReooRJHpubmlt2gySqK+JbDU/XDpu9MJN
+KXHdZBRIykAZYMVjXcHGYyQfP8lDX/Jf88KMVXTlXf1gFk/E+VlUt6p9yTEDXZd9
+PUwbmhULLeyiRiWqJDnUA++iIqnZDBjqfbDo3uAuzock7EDjCOCZVLhxvdeP9Wya
+1j6Xg48FOg1/c5MrYrRSy2hLZ16H3Opye9w5AUJceFrr5Tt8Fj+cqYW76YHM8jl4
+5QIDAQAB
+-----END PUBLIC KEY-----
+
+[ 2020-03-09T13:44:00+00:00 ] : ========== test testSignDocument
+[ 2020-03-09T13:44:00+00:00 ] : node = Timestamp, calculated digest = VUwD4V5YssP2ZO7sDycLbVBhQ5A=
+[ 2020-03-09T13:44:00+00:00 ] : node = Body, calculated digest = CQCiZfCD2fobargrOYofff8L410=
+[ 2020-03-09T13:44:00+00:00 ] : ========== test testVerifySignature
+[ 2020-03-09T13:44:00+00:00 ] : node = Timestamp, calculated digest = VUwD4V5YssP2ZO7sDycLbVBhQ5A=
+[ 2020-03-09T13:44:00+00:00 ] : node = Body, calculated digest = CQCiZfCD2fobargrOYofff8L410=
+[ 2020-03-09T13:44:00+00:00 ] : try: JoeIib2xL8nWqx+alqtO2K0KkJo9KJQEbt9UboFuiwfL6zqIp71Gn1m7ItAuiMDTMxnSv8LqAeDHtD6eXi1oyd3tw+CrEk76BjzN2FVW7bmLvnHDuO7JZ7DCo8QkO8BYzZkI6KOCTRVo2skv5jCchPHOQ/UH79vZfNnMzSNjwsnLg/jpTIWkeKUSzLY9qPjIFXNqoezsk4XT9jxVfIXDRCx8uo41fIKwr5dvhUA0sLSJ8vTs/Bz3MfV2/KRazke1kMcQI4o7WIQTDYk5e7DYbFwtvJE+I5tTAevJytqai7D/WGtMNU+pU6LRLDtf2tWtl5zKqejiSwyIPk+PFIPtOA==
+[ 2020-03-09T13:44:00+00:00 ] : Signature Value: JoeIib2xL8nWqx+alqtO2K0KkJo9KJQEbt9UboFuiwfL6zqIp71Gn1m7ItAuiMDTMxnSv8LqAeDHtD6eXi1oyd3tw+CrEk76BjzN2FVW7bmLvnHDuO7JZ7DCo8QkO8BYzZkI6KOCTRVo2skv5jCchPHOQ/UH79vZfNnMzSNjwsnLg/jpTIWkeKUSzLY9qPjIFXNqoezsk4XT9jxVfIXDRCx8uo41fIKwr5dvhUA0sLSJ8vTs/Bz3MfV2/KRazke1kMcQI4o7WIQTDYk5e7DYbFwtvJE+I5tTAevJytqai7D/WGtMNU+pU6LRLDtf2tWtl5zKqejiSwyIPk+PFIPtOA==
+[ 2020-03-09T13:44:00+00:00 ] : key = -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlacuc90GYfJdZ5Lv4hYz
+1Mx7vKHk0b2oDFjkcVAYKrU9wDRtuxQgXERxw7xX3O3FFkgZ2o7NHB3Bv/Nw9d9D
+e5pYtgDrrCrp8RPNHy/k7j5gU2zQ6o7ReooRJHpubmlt2gySqK+JbDU/XDpu9MJN
+KXHdZBRIykAZYMVjXcHGYyQfP8lDX/Jf88KMVXTlXf1gFk/E+VlUt6p9yTEDXZd9
+PUwbmhULLeyiRiWqJDnUA++iIqnZDBjqfbDo3uAuzock7EDjCOCZVLhxvdeP9Wya
+1j6Xg48FOg1/c5MrYrRSy2hLZ16H3Opye9w5AUJceFrr5Tt8Fj+cqYW76YHM8jl4
+5QIDAQAB
+-----END PUBLIC KEY-----
+

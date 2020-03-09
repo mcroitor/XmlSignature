@@ -8,6 +8,7 @@ $passkey = "123456";
 
 $request_unsigned = "./xml/request_unsigned.xml";
 $request_signed = "./xml/request_signed.xml";
+$request_verified = "./xml/request_verified.xml";
 
 $options = [
     "private_key_path" => $private_key_path,
@@ -16,6 +17,7 @@ $options = [
 ];
 
 function testSignDocument($input, $output, $options) {
+    Logger::write("========== test " . __FUNCTION__);
     try {
         $signature = new XMLSignature($options);
         $signature->_DEBUG = true;
@@ -24,12 +26,14 @@ function testSignDocument($input, $output, $options) {
         $raw = $signature->apply($request);
         // echo $raw->C14N(true);
         file_put_contents($output, $raw->C14N(true));
+        echo "echo ".__FUNCTION__." passed!\n";
     } catch (Exception $ex) {
-        echo "error: {$e->getCode()}, {$e->getMessage()}";
+        echo "error: {$ex->getCode()}, {$ex->getMessage()}";
     }
 }
 
 function testVerifySignature($input, $output, $options) {
+    Logger::write("========== test " . __FUNCTION__);
     try {
         $signature = new XMLSignature($options);
         $signature->_DEBUG = true;
@@ -38,11 +42,12 @@ function testVerifySignature($input, $output, $options) {
         $request = file_get_contents($input);
         $raw = $signature->validate($request);
         // echo $raw->C14N(true);
-        // file_put_contents($output, $raw->C14N(true));
+        file_put_contents($output, $raw->C14N(true));
+        echo "echo ".__FUNCTION__." passed!\n";
     } catch (Exception $ex) {
-        echo "error: {$e->getCode()}, {$e->getMessage()}";
+        echo "error: {$ex->getCode()}, {$ex->getMessage()}";
     }
 }
 
 testSignDocument($request_unsigned, $request_signed, $options);
-testSignDocument($request_signed, $request_signed, $options);
+testVerifySignature($request_signed, $request_verified, $options);
