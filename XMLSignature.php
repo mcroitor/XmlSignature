@@ -2,8 +2,6 @@
 
 class XMLSignature {
 
-    public $_DEBUG = false;
-
     /**
      * useful namespaces
      */
@@ -46,6 +44,10 @@ class XMLSignature {
         "rsa-sha256" => "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", //OPENSSL_ALGO_SHA256,
         "ecdsa-sha256" => "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", // 
         "dsa-sha1" => "http://www.w3.org/2000/09/xmldsig#dsa-sha1" // 
+    ];
+    private const SIGN_OPENSSL = [
+        "rsa-sha1" => OPENSSL_ALGO_SHA1,
+        "rsa-sha256" => OPENSSL_ALGO_SHA256
     ];
 
     /**
@@ -105,6 +107,24 @@ class XMLSignature {
     private $public_key = null;
 
     /**
+     * token part from public string
+     * @var string 
+     */
+    private $token = null;
+
+    /**
+     * Common Name of private / public certificate issuer
+     * @var string 
+     */
+    private $issuer_name = null;
+
+    /**
+     * serial number of private / public certificate
+     * @var string 
+     */
+    private $serial_number = null;
+
+    /**
      * digest algorithm
      * @var string
      */
@@ -121,6 +141,7 @@ class XMLSignature {
      * @var string 
      */
     private $canonicalization_algorithm = "exclusive-1.0";
+    private $binary_token = false;
 
     public function __construct(array $options) {
         if (empty($options["private_key_path"]) === false) {
@@ -136,6 +157,11 @@ class XMLSignature {
         }
         $this->digest_algorithm = (empty($options["digest_algorithm"])) ? "sha1" : $options["digest_algorithm"];
         $this->signature_algorithm = (empty($options["signature_algorithm"])) ? "rsa-sha1" : $options["signature_algorithm"];
+        $this->binary_token = (empty($options["binary_token"])) ? false : $options["binary_token"];
+    }
+
+    public function enableDebug(bool $debug) {
+        Logger::enableDebug($debug);
     }
 
     /**
@@ -154,7 +180,7 @@ class XMLSignature {
             }
             $this->private_key = $certs["pkey"];
             $this->public_key = $certs["cert"];
-            // Logger::write("pfx loaded: " . print_r($certs, true));
+            Logger::writeDebug("pfx loaded: " . print_r($certs, true));
         } else {
             $this->private_key = openssl_pkey_get_private(file_get_contents($private_key_path), $passkey);
         }
@@ -163,6 +189,7 @@ class XMLSignature {
     public function publicKey(string $public_key_path) {
         //$this->public_key = openssl_pkey_get_public(file_get_contents($public_key_path));
         $this->public_key = file_get_contents($public_key_path);
+        $this->parsePublicKey();
     }
 
     /**
@@ -205,15 +232,19 @@ class XMLSignature {
         $signatureNode = $this->document->createElementNS(self::NS["DS"], "ds:Signature");
         $signedInfoNode = $this->createSignedInfo();
         $signatureValueNode = $this->document->createElementNS(self::NS["DS"], "ds:SignatureValue");
-        $binarySecurityTokenNode = $this->createBinarySecutiryToken($id);
+        if ($this->binary_token === true) {
+            $binarySecurityTokenNode = $this->createBinarySecutiryToken($id);
+        }
         $keyInfoNode = $this->createKeyInfo($id);
 
         $signatureNode->appendChild($signedInfoNode);
         $signatureNode->appendChild($signatureValueNode);
         $signatureNode->appendChild($keyInfoNode);
-        $securityNode->appendChild($binarySecurityTokenNode);
-        $securityNode->appendChild($signatureNode);
+        if ($this->binary_token === true) {
+            $securityNode->appendChild($binarySecurityTokenNode);
+        }
         $securityNode->appendChild($timestampNode);
+        $securityNode->appendChild($signatureNode);
 
         $this->getNodes(self::XPATH["Header"])->appendChild($securityNode);
         $signedInfoNode->appendChild($this->createReference($timestampNode));
@@ -223,14 +254,19 @@ class XMLSignature {
         return $this->document;
     }
 
+    private function parsePublicKey() {
+        $token_1 = explode("-----END CERTIFICATE-----", $this->public_key, 2)[0];
+        $token = explode("-----BEGIN CERTIFICATE-----", $token_1)[1];
+        $this->token = str_replace(PHP_EOL, "", $token);
+        $parsed = openssl_x509_parse($this->public_key);
+        Logger::writeDebug(print_r($parsed, true));
+        $this->issuer_name = "CN=" . $parsed["issuer"]["CN"];
+        $this->serial_number = $parsed["serialNumber"];
+    }
+
     private function createBinarySecutiryToken($id) {
-        //$token = $this->public_key;
-        $token = explode("-----END CERTIFICATE-----", $this->public_key, 2)[0];
-        $token = explode("-----BEGIN CERTIFICATE-----", $token)[1];
-        $token = str_replace(PHP_EOL, "", $token);
-        
-        //Logger::write("token = " . print_r($token, 1));
-        $binarySecurityToken = $this->document->createElementNS(self::NS["WSSE"], "BinarySecurityToken", $token);
+        Logger::writeDebug("token = " . print_r($token, 1));
+        $binarySecurityToken = $this->document->createElementNS(self::NS["WSSE"], "BinarySecurityToken", $this->token);
         $binarySecurityToken->setAttributeNS(self::NS["WSU"], "wsu:Id", "BST-{$id}");
         $binarySecurityToken->setAttribute("ValueType", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3");
         $binarySecurityToken->setAttribute("EncodingType", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary");
@@ -238,9 +274,8 @@ class XMLSignature {
     }
 
     private function createSignature(DOMNode $node) {
-        $sign = ["rsa-sha1" => OPENSSL_ALGO_SHA1];
         $signatureValue = null;
-        openssl_sign($node->C14N(true), $signatureValue, $this->private_key, $sign[$this->signature_algorithm]);
+        openssl_sign($node->C14N(true), $signatureValue, $this->private_key, self::SIGN_OPENSSL[$this->signature_algorithm]);
         $base64 = base64_encode($signatureValue);
         return $base64;
     }
@@ -250,10 +285,17 @@ class XMLSignature {
         $keyInfo->setAttributeNS(self::NS["WSU"], "wsu:Id", "KI-{$id}");
         $securityTokenReference = $this->document->createElementNS(self::NS["WSSE"], "SecurityTokenReference");
         $securityTokenReference->setAttributeNS(self::NS["WSU"], "wsu:Id", "STR-{$id}");
-        $reference = $this->document->createElementNS(self::NS["WSSE"], "Reference");
-        $reference->setAttribute("URI", "#BST-{$id}");
-        $reference->setAttribute("ValueType", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3");
-        $securityTokenReference->appendChild($reference);
+        if ($this->binary_token === true) {
+            $reference = $this->document->createElementNS(self::NS["WSSE"], "Reference");
+            $reference->setAttribute("URI", "#BST-{$id}");
+            $reference->setAttribute("ValueType", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3");
+            $securityTokenReference->appendChild($reference);
+        } else {
+            $X509Data = $this->document->createElementNS(self::NS["DS"], "X509Data");
+            $X509Data->appendChild($this->document->createElementNS(self::NS["DS"], "X509IssuerName", $this->issuer_name));
+            $X509Data->appendChild($this->document->createElementNS(self::NS["DS"], "X509SerialNumber", $this->serial_number));
+            $securityTokenReference->appendChild($X509Data);
+        }
         $keyInfo->appendChild($securityTokenReference);
         return $keyInfo;
     }
@@ -336,9 +378,7 @@ class XMLSignature {
      * @return bool
      */
     private function validateReference(): bool {
-        if ($this->_DEBUG === true) {
-            Logger::write("XMLSignature::validateReference");
-        }
+        Logger::writeDebug("XMLSignature::validateReference");
 
         $referenceNodes = $this->getNodes(self::XPATH["Reference"], true);
         $result = true;
@@ -350,17 +390,14 @@ class XMLSignature {
             $tmp = explode("#", $this->getNodes("./ds:DigestMethod", false, $reference)->getAttribute("Algorithm"));
             $method = end($tmp);
             $digest = $this->getNodes("./ds:DigestValue", false, $reference)->textContent;
-            //$prefixList = "";
-            $prefixList = $this->getNodes("./ds:Transforms/ds:Transform/ec:InclusiveNamespaces/@PrefixList", false, $reference)->nodeValue;
+            $prefixList = "";
+            if ($this->getNodes("./ds:Transforms/ds:Transform/ec:InclusiveNamespaces/@PrefixList", true, $reference)->length > 0) {
+                $prefixList = $this->getNodes("./ds:Transforms/ds:Transform/ec:InclusiveNamespaces/@PrefixList", false, $reference)->nodeValue;
+            }
             $calculated = $this->getDigest($data, $method, $prefixList);
             $result = $result && ($calculated === $digest);
         }
-        if ($this->_DEBUG === true) {
-            if ($result === true)
-                Logger::write("XMLSignature::validateReference passed");
-            else
-                Logger::write("XMLSignature::validateReference failed");
-        }
+        Logger::writeDebug("XMLSignature::validateReference" . ($result ? "passed" : "failed"));
         return $result;
     }
 
@@ -370,13 +407,10 @@ class XMLSignature {
      * @return string
      */
     private function getDigest(DOMNode $node, string $algorithm, string $prefixList = ""): string {
-        // Logger::write("canon '{$node->localName}': " . $node->C14N(true));
         $canonical = $node->C14N(true, false, null, explode(" ", $prefixList));
         $digest = openssl_digest($canonical, $algorithm, true);
         $base64 = base64_encode($digest);
-        if ($this->_DEBUG === true) {
-            Logger::write("node = {$node->localName}, calculated digest = {$base64}");
-        }
+        Logger::writeDebug("node = {$node->localName}, calculated digest = {$base64}");
         return $base64;
     }
 
@@ -385,39 +419,29 @@ class XMLSignature {
      * @return bool
      */
     private function validateSignature(): bool {
-        if ($this->_DEBUG === true) {
-            Logger::write("XMLSignature::validateSignature");
-        }
-        $sign = ["rsa-sha1" => OPENSSL_ALGO_SHA1];
+        Logger::writeDebug("XMLSignature::validateSignature");
 
         $signedInfoNode = $this->getNodes(self::XPATH["SignedInfo"]);
         $signatureValue = $this->getNodes(self::XPATH["SignatureValue"])->textContent;
-        $prefixList = $this->getNodes(self::XPATH["SignedInfo"] . "/ds:CanonicalizationMethod/ec:InclusiveNamespaces/@PrefixList")->nodeValue;
-        //$prefixList = "";
-
-        if ($this->_DEBUG) {
-            Logger::write("try: " . $this->createSignature($signedInfoNode));
-            Logger::write("Signature Value: " . $signatureValue);
+        $prefixList = "";
+        if ($this->getNodes(self::XPATH["SignedInfo"] . "/ds:CanonicalizationMethod/ec:InclusiveNamespaces/@PrefixList", true)->length > 0) {
+            $prefixList = $this->getNodes(self::XPATH["SignedInfo"] . "/ds:CanonicalizationMethod/ec:InclusiveNamespaces/@PrefixList")->nodeValue;
         }
+
+        Logger::writeDebug("try: " . $this->createSignature($signedInfoNode));
+        Logger::writeDebug("Signature Value: " . $signatureValue);
         $decode = base64_decode($signatureValue);
         foreach ($this->trusted_keys as $trusted_key) {
-//            if ($this->_DEBUG) {
-//                Logger::write("key = " . openssl_pkey_get_details($trusted_key)["key"]);
-//            }
-            $result = openssl_verify($signedInfoNode->C14N(true, false, null, explode(" ", $prefixList)), $decode, $trusted_key, $sign[$this->signature_algorithm]);
+            $result = openssl_verify($signedInfoNode->C14N(true, false, null, explode(" ", $prefixList)), $decode, $trusted_key, self::SIGN_OPENSSL[$this->signature_algorithm]);
             if ($result === 1) {
-                if ($this->_DEBUG === true) {
-                    Logger::write("XMLSignature::validateSignature passed");
-                }
+                Logger::writeDebug("XMLSignature::validateSignature passed");
                 return true;
             }
             if ($result === -1) {
                 Logger::write("OpenSSL error: " . openssl_error_string());
             }
         }
-        if ($this->_DEBUG === true) {
-            Logger::write("XMLSignature::validateSignature failed");
-        }
+        Logger::writeDebug("XMLSignature::validateSignature failed");
         return false;
     }
 
@@ -466,13 +490,24 @@ class XMLSignature {
 class Logger {
 
     private static $logfile = "debug.log";
+    private static $debug = false;
+
+    public static function enableDebug(bool $debug) {
+        self::$debug = $debug;
+    }
+
+    public static function writeDebug($message) {
+        if (self::$debug === true) {
+            self::write($message);
+        }
+    }
 
     public static function write($message) {
         $stamp = date(DATE_ATOM);
         file_put_contents(self::$logfile, "[ {$stamp} ] : {$message}\n", FILE_APPEND);
     }
 
-    public static function logfile($path) {
+    public static function logfilePath($path) {
         if (!empty($path)) {
             self::$logfile = $path;
         }
