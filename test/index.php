@@ -1,6 +1,5 @@
 <?php
 
-include_once '../libraries/logger.class.php';
 include_once '../XMLSignature.php';
 
 $trusted_key_path = "./cert/MPayOfflineSample.cer";
@@ -20,7 +19,6 @@ $options = [
 ];
 
 function testSignDocument($input, $output, $options) {
-    Logger::write("========== test " . __FUNCTION__);
     try {
         $signature = new XMLSignature($options);
         $signature->enableDebug(true);
@@ -35,7 +33,6 @@ function testSignDocument($input, $output, $options) {
 }
 
 function testVerifySignature($input, $output, $options) {
-    Logger::write("========== test " . __FUNCTION__);
     try {
         $signature = new XMLSignature($options);
         $signature->enableDebug(true);
