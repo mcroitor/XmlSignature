@@ -1,5 +1,6 @@
 <?php
 
+include_once '../libraries/logger.class.php';
 include_once '../XMLSignature.php';
 
 $trusted_key_path = "./cert/MPayOfflineSample.cer";
