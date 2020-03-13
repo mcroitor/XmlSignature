@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * XMLSignature class
+ * 
+ * class for signing SOAP messages with XML signature.
+ * @author Croitor Mihail <mcroitor@gmail.com>
+ * @version 1.0.0
+ * @package XMlSignature
+ */
 class XMLSignature {
 
     /**
@@ -45,6 +52,7 @@ class XMLSignature {
         "ecdsa-sha256" => "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", // 
         "dsa-sha1" => "http://www.w3.org/2000/09/xmldsig#dsa-sha1" // 
     ];
+    
     private const SIGN_OPENSSL = [
         "rsa-sha1" => OPENSSL_ALGO_SHA1,
         "rsa-sha256" => OPENSSL_ALGO_SHA256
@@ -141,6 +149,10 @@ class XMLSignature {
      * @var string 
      */
     private $canonicalization_algorithm = "exclusive-1.0";
+    /**
+     * insert binary security token in signature?
+     * @var bool 
+     */
     private $binary_token = false;
 
     public function __construct(array $options) {
@@ -181,6 +193,10 @@ class XMLSignature {
         }
     }
 
+    /**
+     * register public key
+     * @param string $public_key_path
+     */
     public function publicKey(string $public_key_path) {
         //$this->public_key = openssl_pkey_get_public(file_get_contents($public_key_path));
         $this->public_key = file_get_contents($public_key_path);
@@ -249,6 +265,9 @@ class XMLSignature {
         return $this->document;
     }
 
+    /**
+     * extract common information from public key.
+     */
     private function parsePublicKey() {
         $token_1 = explode("-----END CERTIFICATE-----", $this->public_key, 2)[0];
         $token = explode("-----BEGIN CERTIFICATE-----", $token_1)[1];
@@ -258,6 +277,11 @@ class XMLSignature {
         $this->serial_number = $parsed["serialNumber"];
     }
 
+    /**
+     * create BinarySecurityToken element
+     * @param string $id
+     * @return DOMNode
+     */
     private function createBinarySecutiryToken($id) {
         $binarySecurityToken = $this->document->createElementNS(self::NS["WSSE"], "BinarySecurityToken", $this->token);
         $binarySecurityToken->setAttributeNS(self::NS["WSU"], "wsu:Id", "BST-{$id}");
@@ -266,6 +290,11 @@ class XMLSignature {
         return $binarySecurityToken;
     }
 
+    /**
+     * create signature value
+     * @param DOMNode $node
+     * @return string
+     */
     private function createSignature(DOMNode $node) {
         $signatureValue = null;
         openssl_sign($node->C14N(true), $signatureValue, $this->private_key, self::SIGN_OPENSSL[$this->signature_algorithm]);
@@ -273,6 +302,11 @@ class XMLSignature {
         return $base64;
     }
 
+    /**
+     * create KeyInfo element
+     * @param string $id
+     * @return \DOMElement
+     */
     private function createKeyInfo(string $id): DOMElement {
         $keyInfo = $this->document->createElementNS(self::NS["DS"], "KeyInfo");
         $keyInfo->setAttributeNS(self::NS["WSU"], "wsu:Id", "KI-{$id}");
@@ -293,6 +327,11 @@ class XMLSignature {
         return $keyInfo;
     }
 
+    /**
+     * create Timestamp element
+     * @param string $id
+     * @return \DOMElement
+     */
     private function createTimeStamp(string $id): DOMElement {
         $timestamp = $this->document->createElementNS(self::NS["WSU"], "wsu:Timestamp");
         $t = time();
@@ -307,6 +346,10 @@ class XMLSignature {
         return $timestamp;
     }
 
+    /**
+     * create SignedInfo element
+     * @return \DOMElement
+     */
     private function createSignedInfo(): DOMElement {
         $signedInfo = $this->document->createElementNS(self::NS["DS"], "ds:SignedInfo");
         $canonical = $this->document->createElementNS(self::NS["DS"], "ds:CanonicalizationMethod");
@@ -342,6 +385,15 @@ class XMLSignature {
         return $referenceNode;
     }
 
+    /**
+     * @api
+     * Validate XML signature in SOAP message. XML document can be passed as
+     * DOMDocument or string. If signature is validated, method returns DOMDocument
+     * without signature. In other case an error will be thrown. 
+     * @param type $doc
+     * @return \DOMDocument
+     * @throws SoapFault
+     */
     public function validate($doc): DOMDocument {
         if (is_string($doc)) {
             $clean = preg_replace("/>\s+</", "><", $doc);
@@ -446,6 +498,10 @@ class XMLSignature {
         return $result->item(0);
     }
 
+    /**
+     * helper function, generate UUID
+     * @return string
+     */
     private function uuid() {
         return sprintf('%04X%04X%04X%04X%04X',
                 mt_rand(0, 65535),
@@ -455,6 +511,10 @@ class XMLSignature {
                 mt_rand(0, 65535));
     }
 
+    /**
+     * XPath initialization
+     * @return \DOMXPathX
+     */
     private function initXpath() {
         $xpath = new DOMXPath($this->document);
         $xpath->registerNamespace("wsse", self::NS["WSSE"]);

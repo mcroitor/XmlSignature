@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/template.css">
+    <link rel="icon" href="../images/favicon.ico"/>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js"></script>
+    <script src="../js/search.js"></script>
+    <script defer src="../js/searchIndex.js"></script>
+    </head>
+<body>
+<header class="phpdocumentor-top-header"></header>
+<header class="phpdocumentor-header">
+    <section class="phpdocumentor-section">
+        <h1 class="phpdocumentor-title">Documentation</h1>
+    </section>
+</header>
+<main class="phpdocumentor">
+    <div class="phpdocumentor-section">
+        <aside class="three phpdocumentor-columns phpdocumentor-sidebar">
+    <section data-search-form class="phpdocumentor-search">
+        <h1 class="phpdocumentor-sidebar__category-header">Search</h1>
+        <label class="phpdocumentor-label">
+            <span class="visually-hidden">Search for</span>
+            <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+        </label>
+    </section>
+
+    
+    <h1 class="phpdocumentor-sidebar__category-header">Namespaces</h1>
+    
+        <h1 class="phpdocumentor-sidebar__category-header">Packages</h1>
+            <h2 class="phpdocumentor-sidebar__root-package"><a href="../packages/Default.html"><abbr title="\Default">Default</abbr></a></h2>
+        <ul class="phpdocumentor-list">
+                    </ul>
+            <h2 class="phpdocumentor-sidebar__root-package"><a href="../packages/XMlSignature.html"><abbr title="\XMlSignature">XMlSignature</abbr></a></h2>
+        <ul class="phpdocumentor-list">
+                    </ul>
+        
+    <h1 class="phpdocumentor-sidebar__category-header">Reports</h1>
+        <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/deprecated.html">Deprecated</a></h2>
+    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/errors.html">Errors</a></h2>
+    <h2 class="phpdocumentor-sidebar__root-package"><a href="../reports/markers.html">Markers</a></h2>
+</aside>
+
+        <div class="nine phpdocumentor-columns phpdocumentor-content">
+            <ul class="phpdocumentor-breadcrumbs">
+    <li><a href="../index.html">Home</a></li>
+                        <li><a href="../packages/XMlSignature.html">XMlSignature</a></li>
+            </ul>
+
+    <article class="phpdocumentor-element phpdocumentor-class">
+        <h2 class="phpdocumentor-content__title">
+            XMLSignature
+                                        <div class="phpdocumentor-element__package">
+                    in
+                    <ul class="phpdocumentor-breadcrumbs">
+                                                    <li><a href="../packages/XMlSignature.html">XMlSignature</a></li>
+                                            </ul>
+                </div>
+                                            </h2>
+        <aside class="phpdocumentor-element-found-in">
+            <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+            :
+            <span class="phpdocumentor-element-found-in__line">10</span>
+        </aside>
+
+        <p class="phpdocumentor-class__summary">XMLSignature class</p>
+        <section class="phpdocumentor-class__description"><p>class for signing SOAP messages with XML signature.</p></section>
+
+        <h3>Table of Contents</h3>
+        <table class="phpdocumentor-table_of_contents">
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_NS">NS</a></th>
+                    <td class="phpdocumentor-cell">useful namespaces</td>
+                    <td class="phpdocumentor-cell">[&quot;WSSE&quot; =&gt; &quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;, &quot;WSU&quot; =&gt; &quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;, &quot;DS&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#&quot;, &quot;EC&quot; =&gt; &quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;, &quot;SOAPENV&quot; =&gt; &quot;http://schemas.xmlsoap.org/soap/envelope/&quot;]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_DIGEST_ALGORITHM">DIGEST_ALGORITHM</a></th>
+                    <td class="phpdocumentor-cell">required digest algorithms</td>
+                    <td class="phpdocumentor-cell">[&quot;sha1&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#sha1&quot;, &quot;sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmlenc#sha256&quot;]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_ENCODING_ALGORITHM">ENCODING_ALGORITHM</a></th>
+                    <td class="phpdocumentor-cell">required encoding algorithms</td>
+                    <td class="phpdocumentor-cell">[&quot;base64&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#base64&quot;]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_MAC_ALGORITHM">MAC_ALGORITHM</a></th>
+                    <td class="phpdocumentor-cell">required MAC algorithms</td>
+                    <td class="phpdocumentor-cell">[&quot;hmac-sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#hmac-sha256&quot;, &quot;hmac-sha1&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#hmac-sha256&quot;]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_SIGNATURE_ALGORITHM">SIGNATURE_ALGORITHM</a></th>
+                    <td class="phpdocumentor-cell">required signature algorithms</td>
+                    <td class="phpdocumentor-cell">[
+    &quot;rsa-sha1&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#rsa-sha1&quot;,
+    //OPENSSL_ALGO_SHA1,
+    &quot;rsa-sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&quot;,
+    //OPENSSL_ALGO_SHA256,
+    &quot;ecdsa-sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256&quot;,
+    //
+    &quot;dsa-sha1&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#dsa-sha1&quot;,
+]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_SIGN_OPENSSL">SIGN_OPENSSL</a></th>
+                    <td class="phpdocumentor-cell"></td>
+                    <td class="phpdocumentor-cell">[&quot;rsa-sha1&quot; =&gt; \OPENSSL_ALGO_SHA1, &quot;rsa-sha256&quot; =&gt; \OPENSSL_ALGO_SHA256]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_CANONICALIZATION_ALGORITHM">CANONICALIZATION_ALGORITHM</a></th>
+                    <td class="phpdocumentor-cell">required canonicalitation algorithms</td>
+                    <td class="phpdocumentor-cell">[&quot;exclusive-1.0&quot; =&gt; &quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;, &quot;canon-1.0&quot; =&gt; &quot;http://www.w3.org/TR/2001/REC-xml-c14n-20010315&quot;, &quot;canon-1.1&quot; =&gt; &quot;http://www.w3.org/2006/12/xml-c14n11&quot;]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#constant_XPATH">XPATH</a></th>
+                    <td class="phpdocumentor-cell">usefull xpath</td>
+                    <td class="phpdocumentor-cell">[&quot;Envelope&quot; =&gt; &quot;/soapenv:Envelope&quot;, &quot;Header&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header&quot;, &quot;Body&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Body&quot;, &quot;Security&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security&quot;, &quot;BinarySecurityToken&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature&quot;, &quot;Signature&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/wsse:Signature&quot;, &quot;SignatureValue&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignatureValue&quot;, &quot;SignatureMethod&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignatureMethod&quot;, &quot;SignedInfo&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignedInfo&quot;, &quot;KeyInfo&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:KeyInfo&quot;, &quot;Reference&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignedInfo/ds:Reference&quot;]</td>
+                </tr>
+                                        <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_document">$document</a></th>
+                    <td class="phpdocumentor-cell">the reference to XML document, for sign or verify signature</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMDocument">DOMDocument</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_xpath">$xpath</a></th>
+                    <td class="phpdocumentor-cell">XPath engine for referenced XML document</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMXPath">DOMXPath</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_trusted_keys">$trusted_keys</a></th>
+                    <td class="phpdocumentor-cell">list of references to trusted certificates</td>
+                    <td class="phpdocumentor-cell">resource[]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_private_key">$private_key</a></th>
+                    <td class="phpdocumentor-cell">reference to private certificate for informational service</td>
+                    <td class="phpdocumentor-cell">resource</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_public_key">$public_key</a></th>
+                    <td class="phpdocumentor-cell">reference to public certificate for informational service</td>
+                    <td class="phpdocumentor-cell">resource</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_token">$token</a></th>
+                    <td class="phpdocumentor-cell">token part from public string</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_issuer_name">$issuer_name</a></th>
+                    <td class="phpdocumentor-cell">Common Name of private / public certificate issuer</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_serial_number">$serial_number</a></th>
+                    <td class="phpdocumentor-cell">serial number of private / public certificate</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_digest_algorithm">$digest_algorithm</a></th>
+                    <td class="phpdocumentor-cell">digest algorithm</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_signature_algorithm">$signature_algorithm</a></th>
+                    <td class="phpdocumentor-cell">algorithm for signing / verifying signature</td>
+                    <td class="phpdocumentor-cell">int</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_canonicalization_algorithm">$canonicalization_algorithm</a></th>
+                    <td class="phpdocumentor-cell">canonicalization algorithm</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#property_binary_token">$binary_token</a></th>
+                    <td class="phpdocumentor-cell">insert binary security token in signature?</td>
+                    <td class="phpdocumentor-cell">bool</td>
+                </tr>
+                                                                <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method___construct">__construct()</a></th>
+                    <td class="phpdocumentor-cell"></td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_privateKey">privateKey()</a></th>
+                    <td class="phpdocumentor-cell">register private key</td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_publicKey">publicKey()</a></th>
+                    <td class="phpdocumentor-cell">register public key</td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_trustedKey">trustedKey()</a></th>
+                    <td class="phpdocumentor-cell">register trusted key</td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_apply">apply()</a></th>
+                    <td class="phpdocumentor-cell"></td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMDocument">DOMDocument</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_parsePublicKey">parsePublicKey()</a></th>
+                    <td class="phpdocumentor-cell">extract common information from public key.</td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_createBinarySecutiryToken">createBinarySecutiryToken()</a></th>
+                    <td class="phpdocumentor-cell">create BinarySecurityToken element</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMNode">DOMNode</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_createSignature">createSignature()</a></th>
+                    <td class="phpdocumentor-cell">create signature value</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_createKeyInfo">createKeyInfo()</a></th>
+                    <td class="phpdocumentor-cell">create KeyInfo element</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMElement">DOMElement</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_createTimeStamp">createTimeStamp()</a></th>
+                    <td class="phpdocumentor-cell">create Timestamp element</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMElement">DOMElement</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_createSignedInfo">createSignedInfo()</a></th>
+                    <td class="phpdocumentor-cell">create SignedInfo element</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMElement">DOMElement</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_createReference">createReference()</a></th>
+                    <td class="phpdocumentor-cell">reference can be created only for element attached to DOMDocument</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMElement">DOMElement</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_validate">validate()</a></th>
+                    <td class="phpdocumentor-cell"></td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMDocument">DOMDocument</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_validateReference">validateReference()</a></th>
+                    <td class="phpdocumentor-cell">validate references.</td>
+                    <td class="phpdocumentor-cell">bool</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_getDigest">getDigest()</a></th>
+                    <td class="phpdocumentor-cell">Calculate digest</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_validateSignature">validateSignature()</a></th>
+                    <td class="phpdocumentor-cell">validate signatures.</td>
+                    <td class="phpdocumentor-cell">bool</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_getNodes">getNodes()</a></th>
+                    <td class="phpdocumentor-cell">Wrapper under XPATH queries, throws exceptions if result is missed</td>
+                    <td class="phpdocumentor-cell"><abbr title="\type">type</abbr></td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_uuid">uuid()</a></th>
+                    <td class="phpdocumentor-cell">helper function, generate UUID</td>
+                    <td class="phpdocumentor-cell">string</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/XMLSignature.html#method_initXpath">initXpath()</a></th>
+                    <td class="phpdocumentor-cell">XPath initialization</td>
+                    <td class="phpdocumentor-cell"><abbr title="\DOMXPathX">DOMXPathX</abbr></td>
+                </tr>
+                                            </table>
+
+                    <section>
+                <h3 class="phpdocumentor-constants__header">Constants</h3>
+                                    <a id="constant_NS"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">NS</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">15</span>
+    </aside>
+            <p class="phpdocumentor-summary">useful namespaces</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$NS</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;WSSE&quot; =&gt; &quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot;, &quot;WSU&quot; =&gt; &quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;, &quot;DS&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#&quot;, &quot;EC&quot; =&gt; &quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;, &quot;SOAPENV&quot; =&gt; &quot;http://schemas.xmlsoap.org/soap/envelope/&quot;]</span>
+    </code>
+    </article>
+                                    <a id="constant_DIGEST_ALGORITHM"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">DIGEST_ALGORITHM</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">26</span>
+    </aside>
+            <p class="phpdocumentor-summary">required digest algorithms</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$DIGEST_ALGORITHM</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;sha1&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#sha1&quot;, &quot;sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmlenc#sha256&quot;]</span>
+    </code>
+    </article>
+                                    <a id="constant_ENCODING_ALGORITHM"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">ENCODING_ALGORITHM</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">34</span>
+    </aside>
+            <p class="phpdocumentor-summary">required encoding algorithms</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$ENCODING_ALGORITHM</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;base64&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#base64&quot;]</span>
+    </code>
+    </article>
+                                    <a id="constant_MAC_ALGORITHM"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">MAC_ALGORITHM</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">41</span>
+    </aside>
+            <p class="phpdocumentor-summary">required MAC algorithms</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$MAC_ALGORITHM</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;hmac-sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#hmac-sha256&quot;, &quot;hmac-sha1&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#hmac-sha256&quot;]</span>
+    </code>
+    </article>
+                                    <a id="constant_SIGNATURE_ALGORITHM"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">SIGNATURE_ALGORITHM</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">49</span>
+    </aside>
+            <p class="phpdocumentor-summary">required signature algorithms</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$SIGNATURE_ALGORITHM</span>
+        = <span class="phpdocumentor-signature__default-value">[
+    &quot;rsa-sha1&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#rsa-sha1&quot;,
+    //OPENSSL_ALGO_SHA1,
+    &quot;rsa-sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&quot;,
+    //OPENSSL_ALGO_SHA256,
+    &quot;ecdsa-sha256&quot; =&gt; &quot;http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256&quot;,
+    //
+    &quot;dsa-sha1&quot; =&gt; &quot;http://www.w3.org/2000/09/xmldsig#dsa-sha1&quot;,
+]</span>
+    </code>
+    </article>
+                                    <a id="constant_SIGN_OPENSSL"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">SIGN_OPENSSL</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">56</span>
+    </aside>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$SIGN_OPENSSL</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;rsa-sha1&quot; =&gt; \OPENSSL_ALGO_SHA1, &quot;rsa-sha256&quot; =&gt; \OPENSSL_ALGO_SHA256]</span>
+    </code>
+    </article>
+                                    <a id="constant_CANONICALIZATION_ALGORITHM"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">CANONICALIZATION_ALGORITHM</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">64</span>
+    </aside>
+            <p class="phpdocumentor-summary">required canonicalitation algorithms</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$CANONICALIZATION_ALGORITHM</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;exclusive-1.0&quot; =&gt; &quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;, &quot;canon-1.0&quot; =&gt; &quot;http://www.w3.org/TR/2001/REC-xml-c14n-20010315&quot;, &quot;canon-1.1&quot; =&gt; &quot;http://www.w3.org/2006/12/xml-c14n11&quot;]</span>
+    </code>
+    </article>
+                                    <a id="constant_XPATH"></a>
+<article
+        class="
+            phpdocumentor-element
+            phpdocumentor-constant
+            phpdocumentor-constant--
+                    "
+>
+    <h4 class="phpdocumentor-constant__name">XPATH</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">73</span>
+    </aside>
+            <p class="phpdocumentor-summary">usefull xpath</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility"></span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__name">$XPATH</span>
+        = <span class="phpdocumentor-signature__default-value">[&quot;Envelope&quot; =&gt; &quot;/soapenv:Envelope&quot;, &quot;Header&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header&quot;, &quot;Body&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Body&quot;, &quot;Security&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security&quot;, &quot;BinarySecurityToken&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature&quot;, &quot;Signature&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/wsse:Signature&quot;, &quot;SignatureValue&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignatureValue&quot;, &quot;SignatureMethod&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignatureMethod&quot;, &quot;SignedInfo&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignedInfo&quot;, &quot;KeyInfo&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:KeyInfo&quot;, &quot;Reference&quot; =&gt; &quot;/soapenv:Envelope/soapenv:Header/wsse:Security/ds:Signature/ds:SignedInfo/ds:Reference&quot;]</span>
+    </code>
+    </article>
+                                            </section>
+        
+                    <section>
+                <h3 class="phpdocumentor-properties__header">Properties</h3>
+                                    <a id="property_document"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$document</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">91</span>
+    </aside>
+            <p class="phpdocumentor-summary">the reference to XML document, for sign or verify signature</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><abbr title="\DOMDocument">DOMDocument</abbr></span>
+        <span class="phpdocumentor-signature__name">$document</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_xpath"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$xpath</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">97</span>
+    </aside>
+            <p class="phpdocumentor-summary">XPath engine for referenced XML document</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type"><abbr title="\DOMXPath">DOMXPath</abbr></span>
+        <span class="phpdocumentor-signature__name">$xpath</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_trusted_keys"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$trusted_keys</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">103</span>
+    </aside>
+            <p class="phpdocumentor-summary">list of references to trusted certificates</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">resource[]</span>
+        <span class="phpdocumentor-signature__name">$trusted_keys</span>
+         = <span class="phpdocumentor-signature__default-value">[]</span>    </code>
+    </article>
+                                    <a id="property_private_key"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$private_key</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">109</span>
+    </aside>
+            <p class="phpdocumentor-summary">reference to private certificate for informational service</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">resource</span>
+        <span class="phpdocumentor-signature__name">$private_key</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_public_key"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$public_key</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">115</span>
+    </aside>
+            <p class="phpdocumentor-summary">reference to public certificate for informational service</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">resource</span>
+        <span class="phpdocumentor-signature__name">$public_key</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_token"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$token</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">121</span>
+    </aside>
+            <p class="phpdocumentor-summary">token part from public string</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">string</span>
+        <span class="phpdocumentor-signature__name">$token</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_issuer_name"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$issuer_name</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">127</span>
+    </aside>
+            <p class="phpdocumentor-summary">Common Name of private / public certificate issuer</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">string</span>
+        <span class="phpdocumentor-signature__name">$issuer_name</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_serial_number"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$serial_number</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">133</span>
+    </aside>
+            <p class="phpdocumentor-summary">serial number of private / public certificate</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">string</span>
+        <span class="phpdocumentor-signature__name">$serial_number</span>
+         = <span class="phpdocumentor-signature__default-value">\null</span>    </code>
+    </article>
+                                    <a id="property_digest_algorithm"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$digest_algorithm</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">139</span>
+    </aside>
+            <p class="phpdocumentor-summary">digest algorithm</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">string</span>
+        <span class="phpdocumentor-signature__name">$digest_algorithm</span>
+         = <span class="phpdocumentor-signature__default-value">&quot;sha1&quot;</span>    </code>
+    </article>
+                                    <a id="property_signature_algorithm"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$signature_algorithm</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">145</span>
+    </aside>
+            <p class="phpdocumentor-summary">algorithm for signing / verifying signature</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__name">$signature_algorithm</span>
+         = <span class="phpdocumentor-signature__default-value">&quot;rsa-sha1&quot;</span>    </code>
+    </article>
+                                    <a id="property_canonicalization_algorithm"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$canonicalization_algorithm</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">151</span>
+    </aside>
+            <p class="phpdocumentor-summary">canonicalization algorithm</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">string</span>
+        <span class="phpdocumentor-signature__name">$canonicalization_algorithm</span>
+         = <span class="phpdocumentor-signature__default-value">&quot;exclusive-1.0&quot;</span>    </code>
+    </article>
+                                    <a id="property_binary_token"></a>
+<article
+        class="
+            phpdocumentor-property
+            phpdocumentor-property--private
+                                "
+>
+    <h4 class="phpdocumentor-property__name">$binary_token</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">156</span>
+    </aside>
+            <p class="phpdocumentor-summary">insert binary security token in signature?</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__type">bool</span>
+        <span class="phpdocumentor-signature__name">$binary_token</span>
+         = <span class="phpdocumentor-signature__default-value">\false</span>    </code>
+    </article>
+                                                            </section>
+        
+                    <section>
+                <h3 class="phpdocumentor-methods__header">Methods</h3>
+                                    <a id="method___construct"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">__construct()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">158</span>
+    </aside>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">__construct</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$options</span> :
+                <span class="phpdocumentor-signature__argument__return-type">array</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$options</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">array</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method_privateKey"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">privateKey()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">180</span>
+    </aside>
+        <p class="phpdocumentor-summary">register private key</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">privateKey</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$private_key_path</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$passkey</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$private_key_path</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$passkey</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method_publicKey"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">publicKey()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">200</span>
+    </aside>
+        <p class="phpdocumentor-summary">register public key</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">publicKey</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$public_key_path</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$public_key_path</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method_trustedKey"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">trustedKey()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">210</span>
+    </aside>
+        <p class="phpdocumentor-summary">register trusted key</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">trustedKey</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$trusted_key_path</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$trusted_key_path</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method_apply"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">apply()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">219</span>
+    </aside>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">apply</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$doc</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMDocument">DOMDocument</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$doc</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMDocument">DOMDocument</abbr></span>
+            
+</article>
+                                    <a id="method_parsePublicKey"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">parsePublicKey()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">271</span>
+    </aside>
+        <p class="phpdocumentor-summary">extract common information from public key.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">parsePublicKey</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method_createBinarySecutiryToken"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">createBinarySecutiryToken()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">285</span>
+    </aside>
+        <p class="phpdocumentor-summary">create BinarySecurityToken element</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">createBinarySecutiryToken</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$id</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMNode">DOMNode</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$id</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMNode">DOMNode</abbr></span>
+            
+</article>
+                                    <a id="method_createSignature"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">createSignature()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">298</span>
+    </aside>
+        <p class="phpdocumentor-summary">create signature value</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">createSignature</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$node</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMNode">DOMNode</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">string</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$node</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMNode">DOMNode</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            
+</article>
+                                    <a id="method_createKeyInfo"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">createKeyInfo()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">310</span>
+    </aside>
+        <p class="phpdocumentor-summary">create KeyInfo element</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">createKeyInfo</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$id</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$id</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+            
+</article>
+                                    <a id="method_createTimeStamp"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">createTimeStamp()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">335</span>
+    </aside>
+        <p class="phpdocumentor-summary">create Timestamp element</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">createTimeStamp</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$id</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$id</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+            
+</article>
+                                    <a id="method_createSignedInfo"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">createSignedInfo()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">353</span>
+    </aside>
+        <p class="phpdocumentor-summary">create SignedInfo element</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">createSignedInfo</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+            
+</article>
+                                    <a id="method_createReference"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">createReference()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">369</span>
+    </aside>
+        <p class="phpdocumentor-summary">reference can be created only for element attached to DOMDocument</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">createReference</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$element</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMElement">DOMElement</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$element</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMElement">DOMElement</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMElement">DOMElement</abbr></span>
+            
+</article>
+                                    <a id="method_validate"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">validate()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">397</span>
+    </aside>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">validate</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$doc</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMDocument">DOMDocument</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$doc</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\type">type</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">api</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Validate XML signature in SOAP message. XML document can be passed as
+DOMDocument or string. If signature is validated, method returns DOMDocument
+without signature. In other case an error will be thrown.</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">throws</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMDocument">DOMDocument</abbr></span>
+            
+</article>
+                                    <a id="method_validateReference"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">validateReference()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">425</span>
+    </aside>
+        <p class="phpdocumentor-summary">validate references.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">validateReference</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">bool</span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            
+</article>
+                                    <a id="method_getDigest"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getDigest()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">451</span>
+    </aside>
+        <p class="phpdocumentor-summary">Calculate digest</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">getDigest</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$node</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMNode">DOMNode</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$algorithm</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            [,                 <span class="phpdocumentor-signature__argument__name">$prefixList</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&quot;&quot;</span> ]            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">string</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$node</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMNode">DOMNode</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$algorithm</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$prefixList</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                     = <span class="phpdocumentor-signature__argument__default-value">&quot;&quot;</span>                </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            
+</article>
+                                    <a id="method_validateSignature"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">validateSignature()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">462</span>
+    </aside>
+        <p class="phpdocumentor-summary">validate signatures.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">validateSignature</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">bool</span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            
+</article>
+                                    <a id="method_getNodes"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getNodes()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">490</span>
+    </aside>
+        <p class="phpdocumentor-summary">Wrapper under XPATH queries, throws exceptions if result is missed</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">getNodes</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$path</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            [,                 <span class="phpdocumentor-signature__argument__name">$all</span> :
+                <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span> ]            </span>
+                    <span class="phpdocumentor-signature__argument">
+            [,                 <span class="phpdocumentor-signature__argument__name">$node</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMNode">DOMNode</abbr></span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span> ]            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$path</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$all</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                     = <span class="phpdocumentor-signature__argument__default-value">false</span>                </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$node</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\DOMNode">DOMNode</abbr></span>
+                     = <span class="phpdocumentor-signature__argument__default-value">null</span>                </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\type">type</abbr></span>
+            
+</article>
+                                    <a id="method_uuid"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">uuid()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">505</span>
+    </aside>
+        <p class="phpdocumentor-summary">helper function, generate UUID</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">uuid</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">string</span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            
+</article>
+                                    <a id="method_initXpath"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">initXpath()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="XMLSignature.php"><a href="../files/xmlsignature.html"><abbr title="XMLSignature.php">XMLSignature.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">518</span>
+    </aside>
+        <p class="phpdocumentor-summary">XPath initialization</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">initXpath</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type"><abbr title="\DOMXPathX">DOMXPathX</abbr></span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\DOMXPathX">DOMXPathX</abbr></span>
+            
+</article>
+                                                            </section>
+            </article>
+            <div data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+
+                <h2>Search results</h2>
+                <ul class="phpdocumentor-search-results__entries">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

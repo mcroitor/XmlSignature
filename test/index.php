@@ -36,7 +36,6 @@ function testVerifySignature($input, $output, $options) {
     try {
         $signature = new XMLSignature($options);
         $signature->enableDebug(true);
-
         /* ------- validate --- */
         $request = file_get_contents($input);
         $raw = $signature->validate($request);

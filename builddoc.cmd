@@ -1,0 +1,1 @@
+php phpDocumentor3.phar -f XMLSignature.php -t .\doc\
