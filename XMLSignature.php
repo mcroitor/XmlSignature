@@ -1,4 +1,5 @@
 <?php
+
 /**
  * XMLSignature class
  * 
@@ -52,7 +53,6 @@ class XMLSignature {
         "ecdsa-sha256" => "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", // 
         "dsa-sha1" => "http://www.w3.org/2000/09/xmldsig#dsa-sha1" // 
     ];
-    
     private const SIGN_OPENSSL = [
         "rsa-sha1" => OPENSSL_ALGO_SHA1,
         "rsa-sha256" => OPENSSL_ALGO_SHA256
@@ -149,6 +149,7 @@ class XMLSignature {
      * @var string 
      */
     private $canonicalization_algorithm = "exclusive-1.0";
+
     /**
      * insert binary security token in signature?
      * @var bool 
@@ -167,6 +168,9 @@ class XMLSignature {
                 $this->trustedKey($trusted_key_path);
             }
         }
+        /**
+         * @todo Add validation checks
+         */
         $this->digest_algorithm = (empty($options["digest_algorithm"])) ? "sha1" : $options["digest_algorithm"];
         $this->signature_algorithm = (empty($options["signature_algorithm"])) ? "rsa-sha1" : $options["signature_algorithm"];
         $this->binary_token = (empty($options["binary_token"])) ? false : $options["binary_token"];
@@ -180,7 +184,7 @@ class XMLSignature {
     public function privateKey(string $private_key_path, string $passkey) {
         $tmp = explode(".", $private_key_path);
         $ext = end($tmp);
-        if ($ext === "pfx") {
+        if ($ext === "pfx" || $ext === "p12") {
             $certs = null;
             $result = openssl_pkcs12_read(file_get_contents($private_key_path), $certs, $passkey);
             if ($result === false) {
@@ -198,7 +202,6 @@ class XMLSignature {
      * @param string $public_key_path
      */
     public function publicKey(string $public_key_path) {
-        //$this->public_key = openssl_pkey_get_public(file_get_contents($public_key_path));
         $this->public_key = file_get_contents($public_key_path);
         $this->parsePublicKey();
     }
@@ -226,11 +229,14 @@ class XMLSignature {
         }
         $this->xpath = $this->initXpath();
 
+        /**
+         * @todo Propose another mechanism of ID
+         */
         $id = $this->uuid();
-        // add id to body
+// add id to body
         $body = $this->getNodes(self::XPATH["Body"]);
         $body->setAttributeNS(self::NS["WSU"], "wsu:Id", "ID-{$id}");
-        // create header if not exists
+// create header if not exists
         if ($this->xpath->query(self::XPATH["Header"])->length === 0) {
             $envelope = $this->xpath->query(self::XPATH["Envelope"])->item(0);
             $envelope->insertBefore(
@@ -269,6 +275,9 @@ class XMLSignature {
      * extract common information from public key.
      */
     private function parsePublicKey() {
+        /**
+         * @todo Add checks
+         */
         $token_1 = explode("-----END CERTIFICATE-----", $this->public_key, 2)[0];
         $token = explode("-----BEGIN CERTIFICATE-----", $token_1)[1];
         $this->token = str_replace(PHP_EOL, "", $token);
@@ -368,7 +377,7 @@ class XMLSignature {
      */
     private function createReference(DOMElement $element): DOMElement {
         $referenceNode = $this->document->createElementNS(self::NS["DS"], "Reference");
-        // #TODO: check if Id exists!
+// #TODO: check if Id exists!
         $value = $element->getAttributeNS(self::NS["WSU"], "Id");
         $referenceNode->setAttribute("URI", "#{$value}");
         $transformsNode = $this->document->createElementNS(self::NS["DS"], "ds:Transforms");
@@ -404,18 +413,37 @@ class XMLSignature {
         }
         $this->xpath = $this->initXpath();
         $securityNode = $this->getNodes(self::XPATH["Security"]);
-
+        if (empty($securityNode) === true) {
+            throw new SoapFault("fault", "no security");
+        }
         if (count($this->trusted_keys) === 0) {
             throw new SoapFault("fault", "no trusted key exists");
         }
-        if ($this->validateReference() === false) {
-            throw new SoapFault("fault", "XML reference is not valid");
+        if ($this->validateTimestamp() === false) {
+            throw new SoapFault("fault", "Timestamp is expired");
         }
         if ($this->validateSignature() === false) {
-            throw new SoapFault("fault", "XML signature is not valid");
+            if ($this->validateReference() === false) {
+                throw new SoapFault("fault", "XML reference is not valid");
+            }
+            if ($this->validateSignature() === false) {
+                throw new SoapFault("fault", "XML signature is not valid");
+            }
         }
         $this->getNodes("/soapenv:Envelope/soapenv:Header")->removeChild($securityNode);
         return $this->document;
+    }
+
+    private function validateTimestamp(): bool {
+        $timestampList = $this->xpath->query(self::XPATH["Security"] . "/wsu:Timestamp");
+        if($timestampList->length === 0){
+            throw new SoapFault("faul", "timestamp is missing");
+        }
+        if($timestampList->length > 1){
+            throw new SoapFault("faul", "to much timestamp nodes");
+        }
+        //$timestamp = $timestampList->item(0);
+        return true;
     }
 
     /**
@@ -463,7 +491,7 @@ class XMLSignature {
         $signedInfoNode = $this->getNodes(self::XPATH["SignedInfo"]);
         $signatureValue = $this->getNodes(self::XPATH["SignatureValue"])->textContent;
         $prefixList = "";
-        if ($this->getNodes(self::XPATH["SignedInfo"] . "/ds:CanonicalizationMethod/ec:InclusiveNamespaces/@PrefixList", true)->length > 0) {
+        if ($this->xpath->query(self::XPATH["SignedInfo"] . "/ds:CanonicalizationMethod/ec:InclusiveNamespaces/@PrefixList")->length > 0) {
             $prefixList = $this->getNodes(self::XPATH["SignedInfo"] . "/ds:CanonicalizationMethod/ec:InclusiveNamespaces/@PrefixList")->nodeValue;
         }
 
@@ -490,7 +518,7 @@ class XMLSignature {
     private function getNodes(string $path, bool $all = false, DOMNode $node = null) {
         $result = $this->xpath->query($path, $node);
         if ($result->length === 0) {
-            new SoapFault("fault", "Not found '{$path}'");
+            throw new SoapFault("fault", "Not found '{$path}'");
         }
         if ($all) {
             return $result;

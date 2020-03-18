@@ -21,7 +21,6 @@ $options = [
 function testSignDocument($input, $output, $options) {
     try {
         $signature = new XMLSignature($options);
-        $signature->enableDebug(true);
         /* ------- sign ------- */
         $request = file_get_contents($input);
         $raw = $signature->apply($request);
@@ -35,7 +34,6 @@ function testSignDocument($input, $output, $options) {
 function testVerifySignature($input, $output, $options) {
     try {
         $signature = new XMLSignature($options);
-        $signature->enableDebug(true);
         /* ------- validate --- */
         $request = file_get_contents($input);
         $raw = $signature->validate($request);
